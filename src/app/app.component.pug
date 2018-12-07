@@ -1,0 +1,45 @@
+nav.navbar.fixed-top.navbar-dark.bg-dark
+	a.navbar-brand(href='#')
+		img.d-inline-block.align-top(src='http://www.newswest9.com/pb/resources/images/weather/weather-condition-icons/400x400/66_daily_forecast.png', width='30', height='30', alt='')
+		| Weather
+.container-fluid.contianer-bg
+
+	.row
+		.col-8
+			.row
+				.col-12
+					.card
+						.card-body
+							h6.card-title Last 24 hours
+
+			.row
+				.col
+					.card
+						.card-body
+							h6.card-title Sunday (01/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Monday (02/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Tuesday (03/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Wednesday (04/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Thursday (05/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Friday (06/12)
+				.col
+					.card
+						.card-body
+							h6.card-title Saturday (07/12)
+		.col-4
+			.map(leaflet='', [leafletoptions]='options')

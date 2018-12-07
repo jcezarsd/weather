@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+
+// Variables
+$dark-navbar: #343A40;
+$body-bg: lighten($dark-navbar, 12%);
+$header-margin: 100px;
+
+// END of variables
+
+html, body {
+	font-size: 14px;
+	height: 100%;
+	background-color: $body-bg;
+	font-weight: 400;
+}
+
+.container, .container-fluid {
+
+	&.contianer-bg {
+		margin-top: $header-margin;
+	}
+
+}
+
+.card-body {
+
+	padding: 0.9rem;
+
+}
