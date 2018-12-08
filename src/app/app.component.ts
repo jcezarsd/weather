@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-import 'leaflet';
-declare const L: any;
+import * as L from 'leaflet';
 
 @Component({
 	selector: 'app-root',
@@ -10,7 +10,7 @@ declare const L: any;
 })
 export class AppComponent {
 
-	options = {
+	leafletOptions = {
 		layers: [
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; OpenStreetMap contributors'
@@ -19,5 +19,13 @@ export class AppComponent {
 		zoom: 7,
 		center: L.latLng([46.879966, -121.726909])
 	};
+
+	dailyHistory = {};
+
+	constructor(private http: HttpClient) {
+
+		http.get('history/daily/seven').subscribe(data => this.dailyHistory = data);
+
+	}
 
 }

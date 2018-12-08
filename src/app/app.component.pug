@@ -12,34 +12,12 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 						.card-body
 							h6.card-title Last 24 hours
 
-			.row
-				.col
+			.row.daily-info
+				.col.card-daily(*ngFor='let day of dailyHistory.data')
 					.card
 						.card-body
-							h6.card-title Sunday (01/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Monday (02/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Tuesday (03/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Wednesday (04/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Thursday (05/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Friday (06/12)
-				.col
-					.card
-						.card-body
-							h6.card-title Saturday (07/12)
+							.card-title.d-flex.justify-content-start
+								i.icon.mr-2([ngClass]="'w-' + day.icon")
+								h6 {{day.time | date}}
 		.col-4
-			.map(leaflet='', [leafletoptions]='options')
+			.map(leaflet='', [leafletOptions]='leafletOptions')

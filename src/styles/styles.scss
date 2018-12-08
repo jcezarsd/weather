@@ -23,8 +23,59 @@ html, body {
 
 }
 
-.card-body {
+@font-face {
+	font-family: 'weather-font';
+	src: url('../assets/fonts/weather-font.eot?3lijse');
+	src: url('../assets/fonts/weather-font.eot?3lijse#iefix') format('embedded-opentype'),
+	  url('../assets/fonts/weather-font.ttf?3lijse') format('truetype'),
+	  url('../assets/fonts/weather-font.woff?3lijse') format('woff'),
+	  url('../assets/fonts/weather-font.svg?3lijse#weather-font') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
-	padding: 0.9rem;
+[class^="w-"], [class*=" w-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'weather-font' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
 
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.w-wind:before {
+	content: "\e900";
+}
+.w-snow:before {
+	content: "\e901";
+}
+.w-sleet:before {
+	content: "\e902";
+}
+.w-rain:before {
+	content: "\e903";
+}
+.w-partly-cloudy-night:before {
+	content: "\e904";
+}
+.w-partly-cloudy-day:before {
+	content: "\e905";
+}
+.w-fog:before {
+	content: "\e906";
+}
+.w-cloudy:before {
+	content: "\e907";
+}
+.w-clear-night:before {
+	content: "\e908";
+}
+.w-clear-day:before {
+	content: "\e909";
 }
