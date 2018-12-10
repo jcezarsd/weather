@@ -28,4 +28,10 @@ export class AppComponent {
 
 	}
 
+	getTemperature(value: number) {
+
+		return Math.round(value);
+
+	}
+
 }

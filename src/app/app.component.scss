@@ -14,6 +14,10 @@
     padding-right: 0;
     padding-left: 0;
 
+	.card {
+		min-height: 300px;
+	}
+
 }
 
 .daily-info {
@@ -27,5 +31,17 @@
 
 	font-size: 36px;
 	margin-top: -7px;
+
+}
+
+.red {
+
+	color: red;
+
+}
+
+.blue {
+
+	color: blue;
 
 }

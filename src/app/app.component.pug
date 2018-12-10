@@ -1,6 +1,6 @@
 nav.navbar.fixed-top.navbar-dark.bg-dark
 	a.navbar-brand(href='#')
-		img.d-inline-block.align-top(src='http://www.newswest9.com/pb/resources/images/weather/weather-condition-icons/400x400/66_daily_forecast.png', width='30', height='30', alt='')
+		img.d-inline-block.align-top.mr-2(src='http://www.newswest9.com/pb/resources/images/weather/weather-condition-icons/400x400/66_daily_forecast.png', width='30', height='30', alt='')
 		| Weather
 .container-fluid.contianer-bg
 
@@ -19,5 +19,17 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 							.card-title.d-flex.justify-content-start
 								i.icon.mr-2([ngClass]="'w-' + day.icon")
 								h6 {{day.time | date}}
+							.d-flex.justify-content-between
+								.card-text(title='Maximum temperature')
+									i.fa.fa-arrow-up.red.mr-1
+									label.mr-1 {{getTemperature(day.temperatureMax)}}º
+								.card-text(title='Precipitation')
+									i.fa.fa-tint.mr-1
+									label {{day.precipIntensityMax.toFixed(1)}}mm/h ({{day.precipProbability*100}})%
+							.d-flex.justify-content-between
+								.card-text(title='Minimum temperature')
+									i.fa.fa-arrow-down.blue.mr-1
+									label {{getTemperature(day.temperatureMin)}}º
+							p.card-text {{day.summary}}
 		.col-4
 			.map(leaflet='', [leafletOptions]='leafletOptions')

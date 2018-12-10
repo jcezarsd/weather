@@ -26,7 +26,7 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 			new Latitude(Double.valueOf(Config.LOCATION_LAT))
 		);
 
-		Daily daily = new Daily();
+		Daily daily = null;
 
 		for (int i=1; i<=7; i++) {
 
@@ -43,13 +43,15 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 			DarkSkyJacksonClient client = new DarkSkyJacksonClient();
 			Forecast forecast = client.forecast(request);
 
-			if(daily.getData() == null) {
+			if(daily == null) {
 
-				daily.setData(new ArrayList<>());
+				daily = forecast.getDaily();
+
+			} else {
+
+				daily.getData().add(forecast.getDaily().getData().get(0));
 
 			}
-
-			daily.getData().add(forecast.getDaily().getData().get(0));
 
 		}
 
