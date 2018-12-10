@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Config {
 
 	private Environment env;
-	public static String DARK_SKY_KEY;
+	public static String API_KEY;
 	public static String LOCATION_LAT;
 	public static String LOCATION_LNG;
 
@@ -19,7 +19,7 @@ public class Config {
 
 		this.env = env;
 
-		DARK_SKY_KEY = env.getProperty("api.darksky.key");
+		API_KEY = env.getProperty("api.key");
 		LOCATION_LAT = env.getProperty("location.lat");
 		LOCATION_LNG = env.getProperty("location.lng");
 

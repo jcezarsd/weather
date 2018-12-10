@@ -1,10 +1,12 @@
 package com.example.demo.services;
 
-import tk.plogitech.darksky.forecast.ForecastException;
-import tk.plogitech.darksky.forecast.model.Daily;
+import com.example.demo.models.Hourly;
+import net.aksingh.owmjapis.api.APIException;
+import net.aksingh.owmjapis.model.DailyWeatherForecast;
 
 public interface WeatherInfoService {
 
-	Daily findLastSevenDayHistory() throws ForecastException;
+	DailyWeatherForecast findLastSevenDayHistory() throws APIException;
 
+	Hourly getCurrentWeather() throws APIException;
 }
