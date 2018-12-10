@@ -32,4 +32,4 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 									label {{getTemperature(day.temperatureMin)}}º
 							p.card-text {{day.summary}}
 		.col-4
-			.map(leaflet='', [leafletOptions]='leafletOptions')
+			.map(leaflet='', [leafletOptions]='leafletOptions', (leafletMapReady)='onMapReady($event)')
