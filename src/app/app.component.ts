@@ -56,40 +56,33 @@ export class AppComponent {
 
 		this.owmPrecipitation = L.tileLayer.provider('OpenWeatherMap', {
 			variant: this.mapsVariants.precipitation,
-			apikey: this.apiKey
+			apiKey: this.apiKey
 		});
 
 		this.owmRain = L.tileLayer.provider('OpenWeatherMap', {
 			variant: this.mapsVariants.rain,
-			apikey: this.apiKey
+			apiKey: this.apiKey
 		});
 
 		this.owmTemperature = L.tileLayer.provider('OpenWeatherMap', {
 			variant: this.mapsVariants.temperature,
-			apikey: this.apiKey
+			apiKey: this.apiKey
 		});
 
 		this.owmWind = L.tileLayer.provider('OpenWeatherMap', {
 			variant: this.mapsVariants.wind,
-			apikey: this.apiKey
+			apiKey: this.apiKey
 		});
 
 		this.owmSnow = L.tileLayer.provider('OpenWeatherMap', {
 			variant: this.mapsVariants.snow,
-			apikey: this.apiKey
+			apiKey: this.apiKey
 		});
 
 		this.leafletOptions = {
-			layers: [
-				this.osm,
-				this.owmPrecipitation,
-				this.owmRain,
-				this.owmTemperature,
-				this.owmWind,
-				this.owmSnow
-			],
-			zoom: 7,
-			center: L.latLng([59.467958, 25.057546])
+			layers: [this.osm],
+			zoom: 12,
+			center: L.latLng([59.4353, 24.7556])
 		};
 
 	}
@@ -99,7 +92,10 @@ export class AppComponent {
 		this.map = map;
 
 		const baseMaps = {
-			'OpenStreetMap': this.osm,
+			'OpenStreetMap': this.osm
+		};
+
+		const overlayMaps = {
 			'OWM - Precipitation': this.owmPrecipitation,
 			'OWM - Rain': this.owmRain,
 			'OWM - Temperature': this.owmTemperature,
@@ -107,7 +103,7 @@ export class AppComponent {
 			'OWM - Snow': this.owmSnow
 		};
 
-		L.control.layers(baseMaps).addTo(this.map);
+		L.control.layers(baseMaps, overlayMaps).addTo(this.map);
 
 	}
 

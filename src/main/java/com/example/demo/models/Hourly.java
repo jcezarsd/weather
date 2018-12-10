@@ -29,4 +29,7 @@ public class Hourly {
 	@Column
 	private Double precipitation;
 
+	@Column
+	private String icon;
+
 }

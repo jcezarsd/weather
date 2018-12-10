@@ -29,4 +29,7 @@ public class Daily {
 	@Column
 	private Double precipitation;
 
+	@Column
+	private String icon;
+
 }
