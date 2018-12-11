@@ -32,4 +32,10 @@ public class Hourly {
 	@Column
 	private String icon;
 
+	@Transient
+	private String weatherName;
+
+	@Transient
+	private Double currentTemperature;
+
 }

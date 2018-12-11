@@ -5,61 +5,79 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 .container-fluid.contianer-bg
 
 	.row
-		.col-12
+		.col-6
 			.card
 				.card-body
-					.row
-						.col-1
-							h6.card-title Current forecast
-							.d-flex.flex-column(*ngIf='currentForecast')
-								img.icon(src='{{currentForecast.icon}}')
-								.d-flex.justify-content-start
-									div(title='Maximum temperature')
-										i.fa.fa-arrow-up.red.mr-1
-										label.mr-1 {{getTemperature(currentForecast.maxTemperature)}}º
-									div(title='Minimum temperature')
-										i.fa.fa-arrow-down.blue.mr-1
-										label {{getTemperature(currentForecast.minTemperature)}}º
-								.card-text(title='Precipitation')
-									i.fa.fa-tint.mr-1
-									label {{currentForecast.precipitation.toFixed(1)}}mm
-						.col-11
-							h6.card-title Last 24 hours
-							ul#timeline.timeline
-								li.li(*ngFor='let item of last24hours')
-									.timestamp
-										span
-											i.fa.fa-tint.mr-1
-											label {{item.precipitation.toFixed(1)}}mm
-										span.date
-											| {{item.hour | date:'shortTime'}}
-											span
-									.temperature
-										h6
-											.d-flex.justify-content-between
-												div(title='Maximum temperature')
-													i.fa.fa-arrow-up.red.mr-1
-													label.mr-1 {{getTemperature(item.maxTemperature)}}º
-												div(title='Minimum temperature')
-													i.fa.fa-arrow-down.blue.mr-1
-													label {{getTemperature(item.minTemperature)}}º
+					.col-12.current-card.d-flex.justify-content-around.align-items-center(*ngIf='currentForecast')
+						.d-flex.justify-content-start
+							.d-flex.flex-column.mr-3.mt-1.text-center
+								i.icon.owf([ngClass]="'owf-' + currentForecast.icon")
+								span {{currentForecast.weatherName}}
+							h1 {{currentForecast.currentTemperature}}º
+
+						.d-flex.flex-column
+							.current-title(title='Precipitation')
+								i.fa.fa-tint.mr-1
+								label
+									b Precipitation:
+									|  {{getPrecipitation(currentForecast.precipitation)}}mm
+							.current-title(title='Maximum temperature')
+								i.fa.fa-arrow-up.red.mr-1
+								label
+									b Max temperature:
+									|  {{getTemperature(currentForecast.maxTemperature)}}º
+							.current-title(title='Minimum temperature')
+								i.fa.fa-arrow-down.blue.mr-1
+								label
+									b Min temperature:
+									|  {{getTemperature(currentForecast.minTemperature)}}º
+
+					.col-12.hourly-info.scroll
+						.timeline(*ngFor='let item of last24hours')
+							.hour
+								| {{item.hour | date:'M/dd'}}
+								br
+								| {{item.hour | date:'h:mm a'}}
+							.icon-hourly
+								i.owf([ngClass]="'owf-' + item.icon")
+							.info
+								.temperature
+									.d-flex.justify-content-around
+										div(title='Maximum temperature')
+											i.fa.fa-arrow-up.red.mr-1
+											label.mr-1 {{getTemperature(item.maxTemperature)}}º
+										div(title='Minimum temperature')
+											i.fa.fa-arrow-down.blue.mr-1
+											label {{getTemperature(item.minTemperature)}}º
+								.precipitation
+									span
+										i.fa.fa-tint.mr-1
+										label {{getPrecipitation(item.precipitation)}}mm
+
+		.col-6
+			.map(
+				leaflet='',
+				[leafletOptions]='leafletOptions',
+				(leafletMapReady)='onMapReady($event)'
+			)
+
+	.row.daily-info
 		.col-12
-			.row.daily-info
+			.row
 				.col.card-daily(*ngFor='let item of dailyHistory')
 					.card
 						.card-body
-							.card-title.d-flex.justify-content-start
-								h6 {{item.day | date}}
-							.d-flex.justify-content-between
-								.card-text(title='Maximum temperature')
-									i.fa.fa-arrow-up.red.mr-1
-									label.mr-1 {{getTemperature(item.maxTemperature)}}º
-								.card-text(title='Precipitation')
-									i.fa.fa-tint.mr-1
-									label {{item.precipitation.toFixed(1)}}mm
-							.d-flex.justify-content-between
-								.card-text(title='Minimum temperature')
-									i.fa.fa-arrow-down.blue.mr-1
-									label {{getTemperature(item.minTemperature)}}º
-		.col-12
-			.map(leaflet='', [leafletOptions]='leafletOptions', (leafletMapReady)='onMapReady($event)')
+							.card-title.d-flex.justify-content-center
+								h2 {{item.day | date}}
+							.historical-daily
+								.d-flex.justify-content-around
+									div(title='Maximum temperature')
+										i.fa.fa-arrow-up.red.mr-1
+										label.mr-1 {{getTemperature(item.maxTemperature)}}º
+									div(title='Minimum temperature')
+										i.fa.fa-arrow-down.blue.mr-1
+										label {{getTemperature(item.minTemperature)}}º
+								.d-flex.justify-content-center
+									span
+										i.fa.fa-tint.mr-1
+										label {{getPrecipitation(item.precipitation)}}mm

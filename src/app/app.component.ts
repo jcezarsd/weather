@@ -16,7 +16,7 @@ export class AppComponent {
 
 	dailyHistory;
 	last24hours;
-	currentForecast = {};
+	currentForecast;
 
 	apiKey = '1b30cfa15474fbfccaef6d753e4f52b3';
 
@@ -41,6 +41,12 @@ export class AppComponent {
 	getTemperature(value: number) {
 
 		return Math.round(value);
+
+	}
+
+	getPrecipitation(value: number) {
+
+		return value.toFixed(1);
 
 	}
 
@@ -83,6 +89,8 @@ export class AppComponent {
 			'OWM - Wind': this.owmWind,
 			'OWM - Snow': this.owmSnow
 		};
+
+		this.map.addLayer(this.owmTemperature);
 
 		L.control.layers(baseMaps, overlayMaps).addTo(this.map);
 

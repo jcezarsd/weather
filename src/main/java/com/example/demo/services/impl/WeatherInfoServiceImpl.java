@@ -57,6 +57,7 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 
 			hourly.setMaxTemperature(currentWeather.getMainData().getTempMax());
 			hourly.setMinTemperature(currentWeather.getMainData().getTempMin());
+			hourly.setCurrentTemperature(currentWeather.getMainData().getTemp());
 
 		}
 
@@ -70,7 +71,8 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 
 		}
 
-		hourly.setIcon(currentWeather.getWeatherList().get(0).getIconLink());
+		hourly.setIcon(currentWeather.getWeatherList().get(0).getConditionId().toString());
+		hourly.setWeatherName(currentWeather.getWeatherList().get(0).getMainInfo());
 
 		return hourly;
 

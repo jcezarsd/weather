@@ -6,6 +6,24 @@
 	min-height: 450px;
 }
 
+h1, .icon {
+
+	font-size: 150px;
+
+}
+
+.current-card {
+
+	min-height: 300px;
+
+}
+
+.current-title {
+
+	font-size: 15px;
+
+}
+
 .card-body {
 
 	padding: 0.9rem;
@@ -13,9 +31,6 @@
 }
 
 .card-daily {
-
-    padding-right: 0;
-    padding-left: 0;
 
 	.card {
 		min-height: 100px;
@@ -25,109 +40,103 @@
 
 .daily-info {
 
-	padding-left: 15px;
-	padding-right: 15px;
-
-}
-
-.icon {
-
-	width: 100px;
+	margin-top: 20px;
 
 }
 
 .red {
 
-	color: red;
+	color: #f44336;
 
 }
 
 .blue {
 
-	color: blue;
+	color: #2196F3;
 
 }
 
-.timeline {
-	list-style-type: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	overflow-x: auto;
-}
+.hourly-info {
 
-.li {
-	transition: all 200ms ease-in;
-	min-width: fit-content;
-}
-
-.timestamp {
+    white-space: nowrap;
+    overflow-x: auto;
+	overflow-y: hidden;
 	margin-bottom: 20px;
-	padding: 0px 40px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-weight: 100;
-}
-
-.temperature {
-	padding: 0px 40px;
-	display: flex;
-	justify-content: center;
-	border-top: 2px solid #D6DCE0;
-	position: relative;
-	transition: all 200ms ease-in;
-}
-.temperature h6 {
-	font-weight: 600;
-	margin-top: 20px;
-}
-.temperature:before {
-    content: "";
-    width: 25px;
-    height: 25px;
-    background-color: white;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    position: absolute;
-    top: -15px;
-    left: 42%;
-    transition: all 200ms ease-in;
-}
-
-.li.complete .temperature {
-	border-top: 2px solid #66DC71;
-}
-.li.complete .temperature:before {
-	background-color: #66DC71;
-	border: none;
-	transition: all 200ms ease-in;
-}
-.li.complete .temperature h6 {
-	color: #66DC71;
-}
-
-@media (min-device-width: 320px) and (max-device-width: 700px) {
+	padding: 0;
 
 	.timeline {
-		list-style-type: none;
-		display: block;
+
+		display: inline-block;
+		line-height: 1;
+		text-align: center;
+		height: 128px;
+		width: 75px;
+		background-color: #fcfcfc;
+		border: 1px solid #e9e9e9;
+		border-radius: 1px;
+		margin: 0;
+
+		.hour {
+
+			padding-top: 7px;
+			line-height: 15px;
+			color: #bababa;
+
+		}
+
+		.icon-hourly {
+
+			display: inline-block;
+
+			i {
+
+				margin: 1px 4px 0;
+				height: 48px;
+				width: 48px;
+				font-size: 48px;
+
+			}
+
+		}
+
+		.info {
+
+			font-weight: normal;
+			line-height: 15px;
+			font-size: 13px;
+
+		}
+
 	}
 
-	.li {
-		transition: all 200ms ease-in;
-		display: flex;
-		width: inherit;
-	}
+}
 
-	.timestamp {
-		width: 100px;
-	}
+.scroll::-webkit-scrollbar-track{
 
-	.temperature:before {
-		left: -8%;
-		top: 30%;
-		transition: all 200ms ease-in;
-	}
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+.scroll::-webkit-scrollbar {
+
+	width: 12px;
+	height: 5px;
+	background-color: #F5F5F5;
+
+}
+
+.scroll::-webkit-scrollbar-thumb {
+
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+
+}
+
+.historical-daily {
+
+	font-size: 20px;
 
 }

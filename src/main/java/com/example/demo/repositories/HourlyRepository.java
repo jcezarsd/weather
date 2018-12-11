@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface HourlyRepository extends JpaRepository<Hourly, Integer> {
 
-	@Query("SELECT h FROM Hourly h WHERE h.hour >= ?1 and h.hour < ?2")
+	@Query("SELECT h FROM Hourly h WHERE h.hour >= ?1 and h.hour < ?2 order by h.hour asc")
 	List<Hourly> getAllBetweenDates(Date start, Date end);
 
 }
