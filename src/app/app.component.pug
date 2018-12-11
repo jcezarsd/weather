@@ -1,15 +1,29 @@
 nav.navbar.fixed-top.navbar-dark.bg-dark
 	a.navbar-brand(href='#')
 		img.d-inline-block.align-top.mr-2(src='http://www.newswest9.com/pb/resources/images/weather/weather-condition-icons/400x400/66_daily_forecast.png', width='30', height='30', alt='')
-		| Weather
+		| Tallinn - Weather
 .container-fluid.contianer-bg
 
 	.row
-		.col-8
-			.row
-				.col-12
-					.card
-						.card-body
+		.col-12
+			.card
+				.card-body
+					.row
+						.col-1
+							h6.card-title Current forecast
+							.d-flex.flex-column(*ngIf='currentForecast')
+								img.icon(src='{{currentForecast.icon}}')
+								.d-flex.justify-content-start
+									div(title='Maximum temperature')
+										i.fa.fa-arrow-up.red.mr-1
+										label.mr-1 {{getTemperature(currentForecast.maxTemperature)}}º
+									div(title='Minimum temperature')
+										i.fa.fa-arrow-down.blue.mr-1
+										label {{getTemperature(currentForecast.minTemperature)}}º
+								.card-text(title='Precipitation')
+									i.fa.fa-tint.mr-1
+									label {{currentForecast.precipitation.toFixed(1)}}mm
+						.col-11
 							h6.card-title Last 24 hours
 							ul#timeline.timeline
 								li.li(*ngFor='let item of last24hours')
@@ -29,7 +43,7 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 												div(title='Minimum temperature')
 													i.fa.fa-arrow-down.blue.mr-1
 													label {{getTemperature(item.minTemperature)}}º
-
+		.col-12
 			.row.daily-info
 				.col.card-daily(*ngFor='let item of dailyHistory')
 					.card
@@ -47,5 +61,5 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 								.card-text(title='Minimum temperature')
 									i.fa.fa-arrow-down.blue.mr-1
 									label {{getTemperature(item.minTemperature)}}º
-		.col-4
+		.col-12
 			.map(leaflet='', [leafletOptions]='leafletOptions', (leafletMapReady)='onMapReady($event)')

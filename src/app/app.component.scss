@@ -1,7 +1,9 @@
+@import '../assets/css/leaflet-openweathermap.css';
+
 .map {
 	height: 100%;
 	padding: 0;
-	min-height: 500px;
+	min-height: 450px;
 }
 
 .card-body {
@@ -30,8 +32,7 @@
 
 .icon {
 
-	font-size: 36px;
-	margin-top: -7px;
+	width: 100px;
 
 }
 
@@ -52,10 +53,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow-x: auto;
 }
 
 .li {
 	transition: all 200ms ease-in;
+	min-width: fit-content;
 }
 
 .timestamp {
@@ -80,15 +83,15 @@
 	margin-top: 20px;
 }
 .temperature:before {
-	content: "";
-    width: 50px;
-    height: 30px;
+    content: "";
+    width: 25px;
+    height: 25px;
     background-color: white;
     border-radius: 25px;
     border: 1px solid #ddd;
     position: absolute;
     top: -15px;
-    left: 32%;
+    left: 42%;
     transition: all 200ms ease-in;
 }
 

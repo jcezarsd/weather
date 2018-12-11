@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import 'leaflet';
 declare const L: any;
 
+import '../assets/js/leaflet-openweathermap.js';
 import '../assets/js/leaflet-providers.js';
 import { Map } from 'leaflet';
 @Component({
@@ -13,8 +14,8 @@ import { Map } from 'leaflet';
 })
 export class AppComponent {
 
-	dailyHistory = {};
-	last24hours = {};
+	dailyHistory;
+	last24hours;
 	currentForecast = {};
 
 	apiKey = '1b30cfa15474fbfccaef6d753e4f52b3';
@@ -27,14 +28,6 @@ export class AppComponent {
 	owmTemperature;
 	owmWind;
 	owmSnow;
-
-	mapsVariants = {
-		precipitation: 'precipitation_cls',
-		rain: 'rain_cls',
-		wind: 'wind',
-		temperature: 'temp',
-		snow: 'snow'
-	};
 
 	constructor(private http: HttpClient) {
 
@@ -57,30 +50,15 @@ export class AppComponent {
 			attribution: '&copy; OpenStreetMap contributors'
 		});
 
-		this.owmPrecipitation = L.tileLayer.provider('OpenWeatherMap', {
-			variant: this.mapsVariants.precipitation,
-			apiKey: this.apiKey
-		});
+		this.owmPrecipitation = L.OWM.precipitationClassic({appId: this.apiKey, opacity: 0.5});
 
-		this.owmRain = L.tileLayer.provider('OpenWeatherMap', {
-			variant: this.mapsVariants.rain,
-			apiKey: this.apiKey
-		});
+		this.owmRain = L.OWM.rain({appId: this.apiKey, opacity: 0.5});
 
-		this.owmTemperature = L.tileLayer.provider('OpenWeatherMap', {
-			variant: this.mapsVariants.temperature,
-			apiKey: this.apiKey
-		});
+		this.owmTemperature = L.OWM.temperature({appId: this.apiKey, opacity: 0.5});
 
-		this.owmWind = L.tileLayer.provider('OpenWeatherMap', {
-			variant: this.mapsVariants.wind,
-			apiKey: this.apiKey
-		});
+		this.owmWind = L.OWM.wind({appId: this.apiKey, opacity: 0.5});
 
-		this.owmSnow = L.tileLayer.provider('OpenWeatherMap', {
-			variant: this.mapsVariants.snow,
-			apiKey: this.apiKey
-		});
+		this.owmSnow = L.OWM.snow({appId: this.apiKey, opacity: 0.5});
 
 		this.leafletOptions = {
 			layers: [this.osm],

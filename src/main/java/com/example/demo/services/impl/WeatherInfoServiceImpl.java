@@ -51,7 +51,7 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 		CurrentWeather currentWeather = this.owm.currentWeatherByCityName("Tallinn", OWM.Country.ESTONIA);
 
 		Hourly hourly = new Hourly();
-		hourly.setHour(currentWeather.getDateTime());
+		hourly.setHour(new Date());
 
 		if(currentWeather.hasMainData()) {
 

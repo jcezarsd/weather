@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface DailyRepository extends JpaRepository<Daily, Integer> {
 
-	@Query("SELECT d FROM Daily d where d.day > ?1")
+	@Query("SELECT d FROM Daily d where d.day > ?1 ORDER BY d.day DESC")
 	List<Daily> findLastSevenDays(Date date);
 
 }
