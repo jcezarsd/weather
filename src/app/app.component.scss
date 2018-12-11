@@ -16,7 +16,7 @@
     padding-left: 0;
 
 	.card {
-		min-height: 300px;
+		min-height: 100px;
 	}
 
 }
@@ -44,5 +44,87 @@
 .blue {
 
 	color: blue;
+
+}
+
+.timeline {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.li {
+	transition: all 200ms ease-in;
+}
+
+.timestamp {
+	margin-bottom: 20px;
+	padding: 0px 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-weight: 100;
+}
+
+.temperature {
+	padding: 0px 40px;
+	display: flex;
+	justify-content: center;
+	border-top: 2px solid #D6DCE0;
+	position: relative;
+	transition: all 200ms ease-in;
+}
+.temperature h6 {
+	font-weight: 600;
+	margin-top: 20px;
+}
+.temperature:before {
+	content: "";
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: -15px;
+    left: 32%;
+    transition: all 200ms ease-in;
+}
+
+.li.complete .temperature {
+	border-top: 2px solid #66DC71;
+}
+.li.complete .temperature:before {
+	background-color: #66DC71;
+	border: none;
+	transition: all 200ms ease-in;
+}
+.li.complete .temperature h6 {
+	color: #66DC71;
+}
+
+@media (min-device-width: 320px) and (max-device-width: 700px) {
+
+	.timeline {
+		list-style-type: none;
+		display: block;
+	}
+
+	.li {
+		transition: all 200ms ease-in;
+		display: flex;
+		width: inherit;
+	}
+
+	.timestamp {
+		width: 100px;
+	}
+
+	.temperature:before {
+		left: -8%;
+		top: 30%;
+		transition: all 200ms ease-in;
+	}
 
 }

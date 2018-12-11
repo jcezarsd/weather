@@ -11,25 +11,41 @@ nav.navbar.fixed-top.navbar-dark.bg-dark
 					.card
 						.card-body
 							h6.card-title Last 24 hours
+							ul#timeline.timeline
+								li.li(*ngFor='let item of last24hours')
+									.timestamp
+										span
+											i.fa.fa-tint.mr-1
+											label {{item.precipitation.toFixed(1)}}mm
+										span.date
+											| {{item.hour | date:'shortTime'}}
+											span
+									.temperature
+										h6
+											.d-flex.justify-content-between
+												div(title='Maximum temperature')
+													i.fa.fa-arrow-up.red.mr-1
+													label.mr-1 {{getTemperature(item.maxTemperature)}}º
+												div(title='Minimum temperature')
+													i.fa.fa-arrow-down.blue.mr-1
+													label {{getTemperature(item.minTemperature)}}º
 
 			.row.daily-info
-				.col.card-daily(*ngFor='let day of dailyHistory.data')
+				.col.card-daily(*ngFor='let item of dailyHistory')
 					.card
 						.card-body
 							.card-title.d-flex.justify-content-start
-								i.icon.mr-2([ngClass]="'w-' + day.icon")
-								h6 {{day.time | date}}
+								h6 {{item.day | date}}
 							.d-flex.justify-content-between
 								.card-text(title='Maximum temperature')
 									i.fa.fa-arrow-up.red.mr-1
-									label.mr-1 {{getTemperature(day.temperatureMax)}}º
+									label.mr-1 {{getTemperature(item.maxTemperature)}}º
 								.card-text(title='Precipitation')
 									i.fa.fa-tint.mr-1
-									label {{day.precipIntensityMax.toFixed(1)}}mm/h ({{day.precipProbability*100}})%
+									label {{item.precipitation.toFixed(1)}}mm
 							.d-flex.justify-content-between
 								.card-text(title='Minimum temperature')
 									i.fa.fa-arrow-down.blue.mr-1
-									label {{getTemperature(day.temperatureMin)}}º
-							p.card-text {{day.summary}}
+									label {{getTemperature(item.minTemperature)}}º
 		.col-4
 			.map(leaflet='', [leafletOptions]='leafletOptions', (leafletMapReady)='onMapReady($event)')

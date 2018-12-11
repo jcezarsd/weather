@@ -14,12 +14,13 @@ import { Map } from 'leaflet';
 export class AppComponent {
 
 	dailyHistory = {};
-	leafletOptions = {};
+	last24hours = {};
+	currentForecast = {};
 
 	apiKey = '1b30cfa15474fbfccaef6d753e4f52b3';
 
+	leafletOptions = {};
 	map: Map;
-
 	osm;
 	owmPrecipitation;
 	owmRain;
@@ -39,6 +40,8 @@ export class AppComponent {
 
 		this.loadMapOptions();
 		http.get('history/daily/seven').subscribe(data => this.dailyHistory = data);
+		http.get('history/hourly/twentyFour').subscribe(data => this.last24hours = data);
+		http.get('/weather/current').subscribe(data => this.currentForecast = data);
 
 	}
 
