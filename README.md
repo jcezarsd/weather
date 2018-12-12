@@ -14,4 +14,4 @@ The folder dist has a .jar file and a h2 database file with some forecast info. 
 
 This project is set to fetch current and hourly info from the OpenWeatherMap API, this API requires we use a key, you can find that key on the application.properties file (if you want to use your own, please request at https://openweathermap.org/api). Every midnight a task get all info about the day and generate some historical data.
 
-![App Example](https://i.imgur.com/YmlL7U2.png)
+![App Example](https://i.imgur.com/sDRPRsO.png)
